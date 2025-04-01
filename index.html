@@ -1,0 +1,3525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elegance - эксклюзивная бижутерия XUPING и FALLON. Серьги, колье, браслеты и кольца из медицинского золота.">
+    <title>Elegance - Эксклюзивная бижутерия</title>
+    
+    <!-- Предзагрузка критичных ресурсов -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+    <link rel="preload" href="Grif.jpg" as="image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="Grif.jpg" type="image/jpeg">
+    
+    <!-- Основные стили -->
+    <style>
+        /* Базовые стили и переменные */
+        :root {
+            --primary-color: #d4a5a5;
+            --secondary-color: #8a6e6e;
+            --light-bg: #fff9f9;
+            --text-color: #5d5d5d;
+            --white: #ffffff;
+            --shadow: 0 3px 10px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 10px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f8e3e3, #f5d5d5);
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            user-select: none;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+        
+        .logo:active {
+            transform: scale(0.98);
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 600;
+        }
+        
+        /* Навигация */
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: clamp(14px, 2vw, 16px);
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            display: block;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+        
+        nav ul li a[href*="avito"] {
+            color: #FF5C00;
+            font-weight: 600;
+        }
+        
+        nav ul li a[href*="avito"]:hover {
+            color: #e04e00;
+            background-color: rgba(255, 92, 0, 0.1) !important;
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--secondary-color);
+            padding: 10px;
+        }
+        
+        /* Поиск и каталог */
+        .search-catalog {
+            background-color: var(--white);
+            padding: 15px 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .search-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .search-group label {
+            font-size: 14px;
+            color: var(--secondary-color);
+            padding-left: 15px;
+        }
+        
+        .search-box input,
+        .sort-options select {
+            padding: 12px 15px;
+            border: 1px solid #e0c8c8;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+            width: 100%;
+        }
+        
+        .search-box input:focus,
+        .sort-options select:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .search-actions {
+            display: flex;
+            gap: 10px;
+            grid-column: 1 / -1;
+        }
+        
+        .search-actions button {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .search-box button {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 25px;
+            font-size: 16px;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .search-box button:hover,
+        .search-box button:focus {
+            background-color: #c19191;
+            outline: none;
+        }
+        
+        .sort-options select {
+            background-color: var(--white);
+            cursor: pointer;
+        }
+        
+        .catalog-container {
+            position: relative;
+            grid-column: 1 / -1;
+        }
+        
+        .catalog-btn {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 25px;
+            font-size: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .catalog-btn:hover {
+            background-color: #c19191;
+            transform: translateY(-2px);
+        }
+        
+        .catalog-btn i {
+            margin-right: 8px;
+        }
+        
+        /* Каталог dropdown */
+        .catalog-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        
+        .catalog-dropdown.active {
+            display: block;
+        }
+        
+        .catalog-dropdown h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #f0e0e0;
+        }
+        
+        .catalog-dropdown ul {
+            list-style: none;
+        }
+        
+        .catalog-dropdown ul li {
+            margin: 8px 0;
+        }
+        
+        .catalog-dropdown ul li a {
+            color: var(--secondary-color);
+            transition: var(--transition);
+            display: block;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        .catalog-dropdown ul li a:hover {
+            color: var(--primary-color);
+            background-color: #f9f0f0;
+        }
+        
+        /* Слайдер */
+        .slider-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 16/9;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--white);
+        }
+        
+        /* Продукты */
+        .products-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: none;
+        }
+        
+        .products-container.active {
+            display: block;
+        }
+        
+        .products-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            font-size: 28px;
+        }
+        
+        .products-title:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-item {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-item:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-details {
+            padding: 15px;
+        }
+        
+        .product-details h3 {
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-price span {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+        
+        .add-to-cart {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .add-to-cart:hover {
+            background: #c19191;
+        }
+        
+        /* Секции */
+        .section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 10px;
+        }
+        
+        .faq-question {
+            padding: 15px;
+            background-color: #f9f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f5e0e0;
+        }
+        
+        .faq-question h3 {
+            color: var(--secondary-color);
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+            margin-left: 10px;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: var(--white);
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .faq-answer div {
+            padding: 20px;
+            border-left: 2px solid var(--primary-color);
+            margin-left: 15px;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: #f5e0e0;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* Отзывы */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .review-item {
+            cursor: pointer;
+        }
+        
+        .review-item img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--primary-color);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #f5d5d5, #f8e3e3);
+            padding: 30px 0;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-section p, 
+        .footer-section a {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e8d0d0;
+            color: var(--secondary-color);
+        }
+        
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: var(--white);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 3000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification i {
+            margin-right: 10px;
+        }
+        
+        /* Кнопка "Наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #c19191;
+            transform: translateY(-3px);
+        }
+        
+        /* Мобильные стили */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                order: 1;
+            }
+            
+            .logo {
+                order: 0;
+                margin-right: auto;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                order: 2;
+                margin-top: 15px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .slider-container {
+                aspect-ratio: 1/1;
+                border-radius: 0;
+                margin: 20px 0;
+            }
+            
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-actions {
+                flex-direction: column;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .product-image {
+                height: 180px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .faq-question h3 {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .logo img {
+                margin-right: 10px;
+                margin-bottom: 0;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" onclick="scrollToTop(event)">
+                <img src="Grif.jpg" alt="Логотип Elegance - эксклюзивная бижутерия" loading="lazy">
+                <h1>Elegance</h1>
+            </a>
+            
+            <button class="mobile-menu-btn" aria-label="Меню" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav aria-label="Основное меню">
+                <ul>
+                    <li><a href="#wholesale">Оптовикам</a></li>
+                    <li><a href="#delivery">Доставка</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Поиск и каталог -->
+    <div class="search-catalog">
+        <form class="search-form" onsubmit="event.preventDefault(); performSearch();">
+            <div class="search-group">
+                <label for="searchInput">Поиск по названию</label>
+                <input type="text" id="searchInput" placeholder="Введите название..." aria-label="Поиск товаров">
+            </div>
+            
+            <div class="search-group">
+                <label for="priceInput">Максимальная цена</label>
+                <input type="number" id="priceInput" placeholder="Макс. цена (руб)" min="0" aria-label="Максимальная цена">
+            </div>
+            
+            <div class="search-actions">
+                <button type="submit" class="search-btn">Найти</button>
+                <button type="button" onclick="clearSearch()" style="background-color: #8a6e6e;">Очистить</button>
+            </div>
+            
+            <div class="search-group">
+                <label for="sortSelect">Сортировка</label>
+                <select id="sortSelect" aria-label="Сортировка товаров">
+                    <option value="">Сортировка</option>
+                    <option value="price-asc">Цена по возрастанию</option>
+                    <option value="price-desc">Цена по убыванию</option>
+                    <option value="name-asc">Название (А-Я)</option>
+                    <option value="name-desc">Название (Я-А)</option>
+                </select>
+            </div>
+            
+            <div class="catalog-container">
+                <button type="button" class="catalog-btn" id="catalogBtn" aria-expanded="false" aria-controls="catalogDropdown">
+                    <i class="fas fa-list"></i> Каталог
+                </button>
+                <div class="catalog-dropdown" id="catalogDropdown">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#xuping" onclick="showProducts('xuping')">Бижутерия XUPING и FALLON</a></li>
+                        <li><a href="#earrings" onclick="showProducts('earrings')">Серьги</a></li>
+                        <li><a href="#necklaces" onclick="showProducts('necklaces')">Колье и ожерелья</a></li>
+                        <li><a href="#bracelets" onclick="showProducts('bracelets')">Браслеты</a></li>
+                        <li><a href="#rings" onclick="showProducts('rings')">Кольца</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Слайдер -->
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <img src="devushka_s_juvelirnoy_bizhuteriey.jpg" alt="Новая коллекция весна 2023" loading="lazy">
+            </div>
+            <div class="slide">
+                <img src="B_04FXtOQHw.jpg" alt="Скидки до 50% на все украшения" loading="lazy">
+            </div>
+            <div class="slide">
+                <img src="photo_2025-03-24_19-38-33.jpg" alt="Эксклюзивные колье ручной работы" loading="lazy">
+            </div>
+        </div>
+        <div class="slider-nav" id="sliderNav" aria-label="Навигация по слайдам">
+            <button class="slider-dot active" data-index="0" aria-label="Слайд 1"></button>
+            <button class="slider-dot" data-index="1" aria-label="Слайд 2"></button>
+            <button class="slider-dot" data-index="2" aria-label="Слайд 3"></button>
+        </div>
+    </div>
+
+    <!-- Результаты поиска -->
+    <div id="searchResults" class="section" style="display: none;">
+        <h2>Результаты поиска</h2>
+        <div id="searchResultsGrid" class="products-grid"></div>
+    </div>
+
+    <!-- Контейнеры для товаров -->
+    <div id="earrings-container" class="products-container">
+        <h2 class="products-title">Серьги</h2>
+        <div class="products-grid"></div>
+    </div>
+
+    <div id="necklaces-container" class="products-container">
+        <h2 class="products-title">Колье и ожерелья</h2>
+        <div class="products-grid"></div>
+    </div>
+
+    <div id="bracelets-container" class="products-container">
+        <h2 class="products-title">Браслеты</h2>
+        <div class="products-grid"></div>
+    </div>
+
+    <div id="rings-container" class="products-container">
+        <h2 class="products-title">Кольца</h2>
+        <div class="products-grid"></div>
+    </div>
+
+    <div id="xuping-container" class="products-container">
+        <h2 class="products-title">Бижутерия XUPING и FALLON</h2>
+        <div class="products-grid"></div>
+    </div>
+
+    <!-- Секция для оптовиков -->
+    <section id="wholesale" class="section">
+        <h2>Условия сотрудничества для оптовиков</h2>
+        
+        <div class="wholesale-content">
+            <div class="wholesale-benefits">
+                <h3>Наши преимущества:</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Выгодные оптовые цены</li>
+                    <li><i class="fas fa-check"></i> Минимальная партия от 3000 руб</li>
+                    <li><i class="fas fa-check"></i> Индивидуальные условия для постоянных клиентов</li>
+                    <li><i class="fas fa-check"></i> Быстрая отгрузка товара</li>
+                </ul>
+            </div>
+            
+            <div class="wholesale-conditions">
+                <h3>Условия работы:</h3>
+                <p>Мы предлагаем выгодные условия сотрудничества для магазинов и оптовых покупателей.</p>
+                
+                <p class="contact-info"><i class="fas fa-phone"></i> <a href="tel:89092011152">89092011152</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел Доставка -->
+    <section id="delivery" class="section">
+        <h2>Доставка и оплата</h2>
+        
+        <div class="delivery-methods">
+            <div class="delivery-card">
+                <div class="delivery-card-header">
+                    <i class="fas fa-store"></i>
+                    <h3>Самовывоз</h3>
+                </div>
+                <ul>
+                    <li>Адрес: г. Белгород, ул. Буденного, 14</li>
+                    <li>Часы работы: 10:00 - 20:00</li>
+                    <li>Бесплатно для всех заказов</li>
+                </ul>
+                <a href="https://yandex.ru/maps/-/CDRrVH~X" target="_blank" class="map-btn">Посмотреть на карте</a>
+            </div>
+            
+            <div class="delivery-card">
+                <div class="delivery-card-header">
+                    <i class="fas fa-plane"></i>
+                    <h3>Доставка по России</h3>
+                </div>
+                <p>Отправляем заказы по всей России через СДЭК и Почту России</p>
+                <ul>
+                    <li>Срок доставки: 2-10 дней</li>
+                    <li>Стоимость: от 350 ₽</li>
+                    <li>Отслеживание заказа онлайн</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Дополнительная информация -->
+        <div class="delivery-info">
+            <h3>Важная информация</h3>
+            <ul>
+                <li>Заказы обрабатываются в течение 1 рабочего дня</li>
+                <li>По вопросам звоните: <a href="tel:89092011152">89092011152</a></li>
+            </ul>
+            
+            <!-- Telegram блок -->
+            <div class="telegram-notify">
+                <i class="fab fa-telegram"></i>
+                <div>
+                    <p>Оформите заказ и посмотрите больше информации в нашем Telegram-канале</p>
+                </div>
+                <a href="https://t.me/gold_fild" target="_blank" class="telegram-link">Подписаться →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел Вопросы и ответы -->
+    <section id="faq" class="section">
+        <h2>Вопросы и ответы</h2>
+        
+        <div class="faq-container">
+            <!-- Вопрос 1 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)" tabindex="0" role="button" aria-expanded="false">
+                    <h3>Как сделать заказ?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div>
+                        <p>Вы можете оформить заказ следующими способами:</p>
+                        <ol>
+                            <li>Через Telegram-канал <a>@gold_fild</a></li>
+                            <li>По телефону <a>8-909-201-11-52</a></li>
+                            <li>При личном визите в наш магазин по адресу: г. Белгород, ул. Буденного, 14</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)" tabindex="0" role="button" aria-expanded="false">
+                    <h3>Какие материалы используются в украшениях?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div>
+                        <p>Мы используем только качественные материалы:</p>
+                        <ul>
+                            <li>Медицинская сталь с золотым и серебряным покрытием</li>
+                            <li>Натуральные фианиты и кристаллы Swarovski</li>
+                            <li>Гипоаллергенные сплавы</li>
+                            <li>Натуральный жемчуг в коллекции FALLON</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)" tabindex="0" role="button" aria-expanded="false">
+                    <h3>Как ухаживать за бижутерией?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div>
+                        <p>Рекомендации по уходу:</p>
+                        <ul>
+                            <li>Храните украшения в индивидуальных упаковках</li>
+                            <li>Избегайте контакта с водой, косметикой и парфюмерией</li>
+                            <li>Протирайте украшения мягкой сухой тканью</li>
+                            <li>Снимайте украшения перед сном и занятиями спортом</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 4 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)" tabindex="0" role="button" aria-expanded="false">
+                    <h3>Какие условия возврата?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div>
+                        <p>Возврат возможен в течение 14 дней при соблюдении условий:</p>
+                        <ul>
+                            <li>Сохранен товарный вид и упаковка</li>
+                            <li>Отсутствуют следы ношения</li>
+                            <li>Имеется товарный чек</li>
+                        </ul>
+                        <p>Возврат денежных средств осуществляется в течение 3 рабочих дней.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 5 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)" tabindex="0" role="button" aria-expanded="false">
+                    <h3>Как отличить оригинальные XUPING и FALLON?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <div>
+                        <p>Оригинальная продукция имеет:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Фирменную упаковку с логотипом бренда</li>
+                        <li>Клеймо производителя на изделии</li>
+                        
+                    </ul>
+                    <p style="margin-top: 10px;">Все наши товары поставляются напрямую от производителя с полным комплектом документов.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Раздел Отзывы -->
+<section id="reviews" style="max-width: 1200px; margin: 40px auto; padding: 30px; background-color: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+    <h2 style="color: #d4a5a5; text-align: center; margin-bottom: 30px; font-size: 28px;">Наши отзывы</h2>
+    
+    <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+        <!-- Отзыв 1 -->
+        <div class="review-item" style="cursor: pointer;" onclick="openModal('Снимок экрана (186).png')">
+            <img src="Снимок экрана (186).png" alt="Отзыв клиента 1" style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+        </div>
+        
+        <!-- Отзыв 2 -->
+        <div class="review-item" style="cursor: pointer;" onclick="openModal('Снимок экрана (187).png')">
+            <img src="Снимок экрана (187).png" alt="Отзыв клиента 2" style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+        </div>
+        
+        <!-- Отзыв 3 -->
+        <div class="review-item" style="cursor: pointer;" onclick="openModal('Снимок экрана (184).png')">
+            <img src="Снимок экрана (184).png" alt="Отзыв клиента 3" style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+        </div>
+        
+        <!-- Добавьте больше отзывов по аналогии -->
+    </div>
+</section>
+
+<!-- Модальное окно для просмотра отзывов -->
+<div id="reviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="position: relative; max-width: 90%; max-height: 90%;">
+        <img id="modalImage" src="" alt="Увеличенный отзыв" style="max-width: 100%; max-height: 90vh; border-radius: 8px;">
+        <button onclick="closeModal()" style="position: absolute; top: -40px; right: 0; background: #d4a5a5; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 18px;">×</button>
+    </div>
+</div>
+
+
+
+
+<!-- Подвал -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>О нас</h3>
+            <p>Elegance - это эксклюзивная бижутерия высокого качества по доступным ценам. Мы работаем уже более пяти лет и радуем наших клиентов красивыми украшениями.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> г. Белгород, ул. Буденного, 14</p>
+            <p><i class="fas fa-phone"></i> 89092011152</p>
+            <p><i class="fas fa-clock"></i> Пн-Сб: 10:00 - 20:00</p>
+        </div>
+        <div class="footer-section">
+            <h3>Полезные ссылки</h3>
+            <a href="#wholesale">Оптовикам</a>
+            <a href="#delivery">Доставка и оплата</a>
+        </div>
+    </div>
+
+
+</section>
+        <div class="copyright">
+            <p>&copy; 2025 Elegance - Эксклюзивная бижутерия. Все права защищены.</p>
+        </div>
+    </footer>
+
+
+
+
+
+    <script>
+        // Слайдер
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        function showSlide(index) {
+            if (index >= slideCount) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slideCount - 1;
+            } else {
+                currentSlide = index;
+            }
+            
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Обновляем активную точку
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+        
+        // Автоматическое перелистывание
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Клик по точкам
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                showSlide(parseInt(this.getAttribute('data-index')));
+            });
+        });
+        
+        // Каталог
+        const catalogBtn = document.getElementById('catalogBtn');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        
+        catalogBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            catalogDropdown.classList.toggle('active');
+        });
+        
+        // Закрытие каталога при клике вне его
+        document.addEventListener('click', function() {
+            catalogDropdown.classList.remove('active');
+        });
+        
+        catalogDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+   
+
+
+        // Данные товаров
+const earringsProducts = [
+    {
+        id: 1,
+        name: "Серьги с фианитами золото медицинское",
+        description: "Элегантные серьги с фианитами из медицинского золота",
+        price: "1000 ₽",
+        image: "Gteey.jpg",
+        rating: 4,
+        reviews: 24
+    },
+    {
+        id: 2,
+        name: "Серьги Бабочки золото медицинское",
+        price: "1300 ₽",
+        image: "Jiaal.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 3,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1200 ₽",
+        image: "03.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 4,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1000 ₽",
+        image: "04.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 5,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "00.5 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 6,
+        name: "Серьги золото медицинское",
+        price: "1300 ₽",
+        image: "00.6 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 7,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1300 ₽",
+        image: "0.7.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 8,
+        name: "Серьги Совушки золото медицинское",
+        price: "1200 ₽",
+        image: "08.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 9,
+        name: "Серьги Аллигаторы золото медицинское",
+        price: "1200 ₽",
+        image: "09.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 10,
+        name: "Серьги с чёрными фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "10.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 11,
+        name: "Серьги Версаче золото медицинское",
+        price: "1200 ₽",
+        image: "11.jpg",
+        rating: 5,
+        reviews: 37
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    // Добавьте остальные товары...
+];
+
+// Данные товаров для колье и ожерелий
+const necklacesProducts = [
+    {
+        id: 101,
+        name: "Цепочка с кулоном Стрелец золото медицинское",
+        price: "2100 ₽",
+        image: "101.jpg",
+        rating: 5,
+        reviews: 18
+    },
+    {
+        id: 102,
+        name: "Цепочка с ладанкой золото медицинское",
+        price: "2000 ₽",
+        image: "102.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 103,
+        name: "Цепочка с кристаллом Swarovski золото медицинское",
+        price: "2000 ₽",
+        image: "103 — копия.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 104,
+        name: "Цепочка с кулоном Весы медицинское золото",
+        price: "2000 ₽",
+        image: "104.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 105,
+        name: "Цепочка с крестом золото медицинское",
+        price: "2000 ₽",
+        image: "105.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 106,
+        name: "Цепочка с кулоном Купидон золото медицинское",
+        price: "1800 ₽",
+        image: "106.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 107,
+        name: "Цепочка с кулоном Ангел золото медицинское",
+        price: "2100 ₽",
+        image: "107.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 108,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2000 ₽",
+        image: "108.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 109,
+        name: "Цепочка с кулоном Мать и дитя золото медицинское",
+        price: "2100 ₽",
+        image: "109.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 110,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2100 ₽",
+        image: "110.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 111,
+        name: "Цепочка с кулоном Колибри золото медицинское",
+        price: "2000 ₽",
+        image: "111.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    // Добавьте остальные товары по аналогии
+    // Убедитесь что у вас есть соответствующие изображения
+];
+
+
+
+
+
+
+// Данные товаров для браслетов
+const braceletsProducts = [
+    {
+        id: 201,
+        name: "Браслет золото медицинское",
+        price: "1500 ₽",
+        image: "201.jpg",
+        rating: 4,
+        reviews: 15
+    },
+    {
+        id: 202,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "202.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 203,
+        name: "Браслет Бисмарк золото медицинское",
+        price: "1500 ₽",
+        image: "203.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 204,
+        name: "Браслет золото медицинское",
+        price: "1300 ₽",
+        image: "204.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 205,
+        name: "Браслет с фианитами золото медицинское",
+        price: "1500 ₽",
+        image: "205.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 206,
+        name: "Браслет Жёлтый бриллиант золото медицинское",
+        price: "1500 ₽",
+        image: "206.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 207,
+        name: "Браслет золото медицинское",
+        price: "1200 ₽",
+        image: "207.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 208,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "208.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 209,
+        name: "Браслет золото медицинское",
+        price: "1100 ₽",
+        image: "209.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 210,
+        name: "Браслет Византийское плетение золото медицинское",
+        price: "1500 ₽",
+        image: "210.jpg",
+        rating: 5,
+        reviews: 22
+    },
+
+        // Добавьте остальные товары по аналогии
+    // Убедитесь что у вас есть соответствующие изображения
+];
+
+
+
+
+
+
+// Добавьте этот массив с товарами колец в раздел с другими товарами
+const ringsProducts = [
+    {
+        id: 301,
+        name: "Кольцо золото медицинское",
+        description: "Элегантное кольцо с фианитами из медицинского золота",
+        price: "1200 ₽",
+        image: "301.jpg",
+        rating: 4,
+        reviews: 18
+    },
+    {
+        id: 302,
+        name: "Кольцо с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "302.jpg",
+        rating: 5,
+        reviews: 25
+    },
+    {
+        id: 303,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "303.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 304,
+        name: "Обручальные кольца",
+        price: "2000 ₽",
+        image: "304.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 305,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "305.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 306,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "306.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 307,
+        name: "Кольцо золото медицинское",
+        price: "1200 ₽",
+        image: "307.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 308,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "308.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 309,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "309.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 310,
+        name: "Перстень золото медицинское",
+        price: "1300 ₽",
+        image: "310.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    // Добавьте больше колец по аналогии
+];
+
+
+
+
+
+// Данные товаров для бижутерии XUPING и FALLON
+const xupingProducts = [
+{
+        id: 401,
+        name: "Серьги с фианитами золото медицинское",
+        description: "Элегантные серьги с фианитами из медицинского золота",
+        price: "1000 ₽",
+        image: "Gteey.jpg",
+        rating: 4,
+        reviews: 24
+    },
+    {
+        id: 402,
+        name: "Серьги Бабочки золото медицинское",
+        price: "1300 ₽",
+        image: "Jiaal.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 403,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1200 ₽",
+        image: "03.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 404,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1000 ₽",
+        image: "04.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 405,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "00.5 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 406,
+        name: "Серьги золото медицинское",
+        price: "1300 ₽",
+        image: "00.6 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 407,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1300 ₽",
+        image: "0.7.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 408,
+        name: "Серьги Совушки золото медицинское",
+        price: "1200 ₽",
+        image: "08.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 409,
+        name: "Серьги Аллигаторы золото медицинское",
+        price: "1200 ₽",
+        image: "09.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 410,
+        name: "Серьги с чёрными фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "10.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 411,
+        name: "Серьги Версаче золото медицинское",
+        price: "1200 ₽",
+        image: "11.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 412,
+        name: "Цепочка с кулоном Стрелец золото медицинское",
+        price: "2100 ₽",
+        image: "101.jpg",
+        rating: 5,
+        reviews: 18
+    },
+    {
+        id: 413,
+        name: "Цепочка с ладанкой золото медицинское",
+        price: "2000 ₽",
+        image: "102.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 414,
+        name: "Цепочка с кристаллом Swarovski золото медицинское",
+        price: "2000 ₽",
+        image: "103 — копия.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 415,
+        name: "Цепочка с кулоном Весы медицинское золото",
+        price: "2000 ₽",
+        image: "104.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 416,
+        name: "Цепочка с крестом золото медицинское",
+        price: "2000 ₽",
+        image: "105.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 417,
+        name: "Цепочка с кулоном Купидон золото медицинское",
+        price: "1800 ₽",
+        image: "106.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 418,
+        name: "Цепочка с кулоном Ангел золото медицинское",
+        price: "2100 ₽",
+        image: "107.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 419,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2000 ₽",
+        image: "108.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 420,
+        name: "Цепочка с кулоном Мать и дитя золото медицинское",
+        price: "2100 ₽",
+        image: "109.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 421,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2100 ₽",
+        image: "110.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 422,
+        name: "Цепочка с кулоном Колибри золото медицинское",
+        price: "2000 ₽",
+        image: "111.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 423,
+        name: "Браслет золото медицинское",
+        price: "1500 ₽",
+        image: "201.jpg",
+        rating: 4,
+        reviews: 15
+    },
+    {
+        id: 424,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "202.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 425,
+        name: "Браслет Бисмарк золото медицинское",
+        price: "1500 ₽",
+        image: "203.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 426,
+        name: "Браслет золото медицинское",
+        price: "1300 ₽",
+        image: "204.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 427,
+        name: "Браслет с фианитами золото медицинское",
+        price: "1500 ₽",
+        image: "205.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 428,
+        name: "Браслет Жёлтый бриллиант золото медицинское",
+        price: "1500 ₽",
+        image: "206.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 429,
+        name: "Браслет золото медицинское",
+        price: "1200 ₽",
+        image: "207.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 430,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "208.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 431,
+        name: "Браслет золото медицинское",
+        price: "1100 ₽",
+        image: "209.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 432,
+        name: "Браслет Византийское плетение золото медицинское",
+        price: "1500 ₽",
+        image: "210.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 433,
+        name: "Кольцо золото медицинское",
+        description: "Элегантное кольцо с фианитами из медицинского золота",
+        price: "1200 ₽",
+        image: "301.jpg",
+        rating: 4,
+        reviews: 18
+    },
+    {
+        id: 434,
+        name: "Кольцо с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "302.jpg",
+        rating: 5,
+        reviews: 25
+    },
+    {
+        id: 435,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "303.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 436,
+        name: "Обручальные кольца",
+        price: "2000 ₽",
+        image: "304.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 437,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "305.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 438,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "306.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 439,
+        name: "Кольцо золото медицинское",
+        price: "1200 ₽",
+        image: "307.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 440,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "308.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 441,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "309.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 442,
+        name: "Перстень золото медицинское",
+        price: "1300 ₽",
+        image: "310.jpg",
+        rating: 4,
+        reviews: 12
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    // Добавьте остальные товары...
+];
+   
+
+
+
+
+
+// Функция отображения бижутерии XUPING и FALLON
+function showXuping() {
+    const container = document.getElementById('xuping-container');
+    const grid = container.querySelector('.products-grid');
+    
+    grid.innerHTML = '';
+    
+    xupingProducts.forEach(product => {
+        grid.innerHTML += `
+        <div class="product-item" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="product-image" style="height: 250px; overflow: hidden;">
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="product-details" style="padding: 15px;">
+                <h3 style="color: #8a6e6e; margin-bottom: 8px; font-size: 16px;">${product.name}</h3>
+                <div class="product-price" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: bold; color: #d4a5a5; font-size: 18px;">${product.price}</span>
+                    </div>
+                    <button class="add-to-cart" data-id="${product.id}" 
+                        onclick="event.preventDefault(); document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth', block: 'start'}); setTimeout(showCenterNotification, 500);" 
+                        style="background: #d4a5a5; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                        В корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+    
+    container.style.display = 'block';
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+
+// Обработчик клика на "Бижутерия XUPING и FALLON" в каталоге
+document.querySelector('.catalog-dropdown a[href="#xuping"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    catalogDropdown.classList.remove('active');
+    showXuping();
+});
+
+
+
+
+
+// Добавьте эту функцию для отображения колец
+function showRings() {
+    const container = document.getElementById('rings-container');
+    const grid = container.querySelector('.products-grid');
+    
+    // Очищаем контейнер
+    grid.innerHTML = '';
+    
+    // Добавляем товары
+    ringsProducts.forEach(product => {
+        grid.innerHTML += `
+        <div class="product-item" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="product-image" style="height: 250px; overflow: hidden;">
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="product-details" style="padding: 15px;">
+                <h3 style="color: #8a6e6e; margin-bottom: 8px; font-size: 16px;">${product.name}</h3>
+                <div class="product-price" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: bold; color: #d4a5a5; font-size: 18px;">${product.price}</span>
+                        ${product.oldPrice ? `<span style="text-decoration: line-through; color: #999; font-size: 14px; margin-left: 5px;">${product.oldPrice}</span>` : ''}
+                    </div>
+                    <button class="add-to-cart" data-id="${product.id}" 
+                        onclick="event.preventDefault(); document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth', block: 'start'}); setTimeout(showCenterNotification, 500);" 
+                        style="background: #d4a5a5; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                        В корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+    
+    // Показываем контейнер
+    container.style.display = 'block';
+    
+    // Прокручиваем к разделу
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Добавьте этот обработчик для ссылки на кольца в каталоге
+document.querySelector('.catalog-dropdown a[href="#rings"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    catalogDropdown.classList.remove('active');
+    showRings();
+});
+
+// Обновите функцию поиска, чтобы она включала кольца
+function performSearch() {
+    // ... существующий код ...
+    const allProducts = [...earringsProducts, ...necklacesProducts, ...braceletsProducts, ...ringsProducts];
+    // ... остальной код ...
+}
+
+
+
+
+
+
+
+
+function showEarrings() {
+    const container = document.getElementById('earrings-container');
+    const grid = container.querySelector('.products-grid');
+    
+    // Очищаем контейнер
+    grid.innerHTML = '';
+    
+    // Добавляем товары
+    earringsProducts.forEach(product => {
+        grid.innerHTML += `
+        <div class="product-item" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="product-image" style="height: 250px; overflow: hidden;">
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="product-details" style="padding: 15px;">
+                <h3 style="color: #8a6e6e; margin-bottom: 8px; font-size: 16px;">${product.name}</h3>
+                <div class="product-price" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: bold; color: #d4a5a5; font-size: 18px;">${product.price}</span>
+                        ${product.oldPrice ? `<span style="text-decoration: line-through; color: #999; font-size: 14px; margin-left: 5px;">${product.oldPrice}</span>` : ''}
+                    </div>
+<button class="add-to-cart" data-id="${product.id}" 
+        onclick="event.preventDefault(); document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth', block: 'start'});" 
+        style="background: #d4a5a5; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+    В корзину
+</button>
+            </div>
+        </div>
+        `;
+    });
+    
+
+ 
+
+
+    // Показываем контейнер
+    container.style.display = 'block';
+    
+    // Прокручиваем к разделу
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Обработчик клика на "Серьги" в каталоге
+document.querySelector('.catalog-dropdown a[href="#earrings"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    catalogDropdown.classList.remove('active');
+    showEarrings();
+});
+
+// Обработчик клика на "Колье и ожерелья" в каталоге
+document.querySelector('.catalog-dropdown a[href="#necklaces"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    catalogDropdown.classList.remove('active');
+    showNecklaces();
+});
+
+// Обработчик клика на "Браслеты" в каталоге
+document.querySelector('.catalog-dropdown a[href="#bracelets"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    catalogDropdown.classList.remove('active');
+    showBracelets();
+});
+
+
+
+
+
+setupImageZoom();
+grid.innerHTML += `
+<div class="product-item" style="...">
+    <div class="product-image" style="...">
+        <img src="${product.image}" alt="${product.name}" 
+             style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;"
+             onclick="showExpandedImage(this)">
+    </div>
+    ...
+</div>
+`;
+
+
+
+
+
+
+
+// Функция отображения колье и ожерелий
+function showNecklaces() {
+    const container = document.getElementById('necklaces-container');
+    const grid = container.querySelector('.products-grid');
+    
+    // Очищаем контейнер
+    grid.innerHTML = '';
+    
+    // Добавляем товары
+    necklacesProducts.forEach(product => {
+        grid.innerHTML += `
+        <div class="product-item" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="product-image" style="height: 250px; overflow: hidden;">
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="product-details" style="padding: 15px;">
+                <h3 style="color: #8a6e6e; margin-bottom: 8px; font-size: 16px;">${product.name}</h3>
+                <div class="product-price" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: bold; color: #d4a5a5; font-size: 18px;">${product.price}</span>
+                        ${product.oldPrice ? `<span style="text-decoration: line-through; color: #999; font-size: 14px; margin-left: 5px;">${product.oldPrice}</span>` : ''}
+                    </div>
+                    <button class="add-to-cart" data-id="${product.id}" 
+                        onclick="event.preventDefault(); document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth', block: 'start'}); setTimeout(showCenterNotification, 500);" 
+                        style="background: #d4a5a5; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                        В корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+    
+    // Показываем контейнер
+    container.style.display = 'block';
+    
+    // Прокручиваем к разделу
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+
+
+// Функция отображения браслетов
+function showBracelets() {
+    const container = document.getElementById('bracelets-container');
+    const grid = container.querySelector('.products-grid');
+    
+    // Очищаем контейнер
+    grid.innerHTML = '';
+    
+    // Добавляем товары
+    braceletsProducts.forEach(product => {
+        grid.innerHTML += `
+        <div class="product-item" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div class="product-image" style="height: 250px; overflow: hidden;">
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="product-details" style="padding: 15px;">
+                <h3 style="color: #8a6e6e; margin-bottom: 8px; font-size: 16px;">${product.name}</h3>
+                <div class="product-price" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: bold; color: #d4a5a5; font-size: 18px;">${product.price}</span>
+                        ${product.oldPrice ? `<span style="text-decoration: line-through; color: #999; font-size: 14px; margin-left: 5px;">${product.oldPrice}</span>` : ''}
+                    </div>
+                    <button class="add-to-cart" data-id="${product.id}" 
+                        onclick="event.preventDefault(); document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth', block: 'start'}); setTimeout(showCenterNotification, 500);" 
+                        style="background: #d4a5a5; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                        В корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+    
+    // Показываем контейнер
+    container.style.display = 'block';
+    
+    // Прокручиваем к разделу
+    container.scrollIntoView({ behavior: 'smooth' });
+}
+
+
+
+
+
+
+
+
+
+
+// Обновленная функция поиска
+function performSearch() {
+    const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+    const maxPrice = parseInt(document.getElementById('priceInput').value) || 0;
+    const sortOption = document.getElementById('sortSelect').value;
+    const resultsContainer = document.getElementById('searchResults');
+    const resultsGrid = document.getElementById('searchResultsGrid');
+    
+    // Скрываем все категории товаров
+    document.querySelectorAll('[id$="-container"]').forEach(container => {
+        container.style.display = 'none';
+    });
+    
+    // Очищаем предыдущие результаты
+    resultsGrid.innerHTML = '';
+    
+    if (searchTerm === '' && maxPrice === 0) {
+        resultsContainer.style.display = 'none';
+        return;
+    }
+    
+    // Ищем товары во всех категориях (включая кольца)
+    const allProducts = [...earringsProducts, ...necklacesProducts, ...braceletsProducts, ...ringsProducts];
+    
+    // Фильтрация
+    let foundProducts = allProducts.filter(product => {
+        const price = product.priceValue || parseInt(product.price.replace(/\D/g, ''));
+        const nameMatch = searchTerm === '' || product.name.toLowerCase().includes(searchTerm);
+        const priceMatch = maxPrice === 0 || price <= maxPrice;
+        return nameMatch && priceMatch;
+    });
+    
+    // Сортировка
+    if (sortOption) {
+        foundProducts = sortProducts(foundProducts, sortOption);
+    }
+    
+    if (foundProducts.length > 0) {
+        // Отображаем найденные товары
+        foundProducts.forEach(product => {
+            resultsGrid.innerHTML += createProductCard(product);
+        });
+        
+        resultsContainer.style.display = 'block';
+        resultsContainer.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        resultsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #8a6e6e;">Товары не найдены</p>';
+        resultsContainer.style.display = 'block';
+    }
+}
+
+// Функция сортировки
+function sortProducts(products, option) {
+    return [...products].sort((a, b) => {
+        const priceA = a.priceValue || parseInt(a.price.replace(/\D/g, ''));
+        const priceB = b.priceValue || parseInt(b.price.replace(/\D/g, ''));
+        
+        switch(option) {
+            case 'price-asc':
+                return priceA - priceB;
+            case 'price-desc':
+                return priceB - priceA;
+            case 'name-asc':
+                return a.name.localeCompare(b.name);
+            case 'name-desc':
+                return b.name.localeCompare(a.name);
+            default:
+                return 0;
+        }
+    });
+}
+
+// Функция создания карточки товара
+function createProductCard(product) {
+    return `
+    <div class="product-item" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+        <div style="height: 200px; overflow: hidden;">
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="padding: 15px;">
+            <h3 style="color: #8a6e6e; margin-bottom: 8px; font-size: 16px;">${product.name}</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: bold; color: #d4a5a5; font-size: 18px;">${product.price}</span>
+                <button onclick="addToCart(${product.id})" style="background: #d4a5a5; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">В корзину</button>
+            </div>
+        </div>
+    </div>
+    `;
+}
+       
+      
+
+function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('priceInput').value = '';
+    document.getElementById('sortSelect').value = '';
+    document.getElementById('searchResults').style.display = 'none';
+}
+    
+  
+
+
+
+
+// Функция добавления в корзину
+function addToCart(productId) {
+    document.querySelector('.delivery-info').scrollIntoView({ behavior: 'smooth' });
+    
+    // Показываем уведомление
+    const notification = document.createElement('div');
+    notification.innerHTML = `
+        <div style="position: fixed; bottom: 20px; right: 20px; background: #4CAF50; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0,0,0,0.2); display: flex; align-items: center;">
+            <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+            <span>Товар добавлен в корзину</span>
+        </div>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+
+
+
+
+
+// Функция для прокрутки вверх и обновления страницы
+function scrollToTop() {
+    // Прокручиваем к верху страницы
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Обновляем страницу через небольшой таймаут (500ms), чтобы увидеть прокрутку
+    setTimeout(() => {
+        location.reload();
+    }, 500);
+}
+
+
+function scrollToTop() {
+    window.scrollTo(0, 0);
+    location.reload();
+}
+
+
+
+
+
+// Новая версия функции для работы с FAQ
+function toggleFaq(element, event) {
+    // Отменяем всплытие события, чтобы клик по ответу не закрывал вопрос
+    if (event) event.stopPropagation();
+    
+    const answer = element.nextElementSibling;
+    const icon = element.querySelector('i');
+    
+    // Переключаем только текущий вопрос
+    if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+
+// Закрытие ответа при клике вне вопроса
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.faq-question') && !e.target.closest('.faq-answer')) {
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.maxHeight = null;
+            answer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+        });
+    }
+});
+
+
+
+
+
+function showSlide(index) {
+            if (index >= slideCount) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slideCount - 1;
+            } else {
+                currentSlide = index;
+            }
+            
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Обновляем активную точку
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+            
+            // Добавляем обработчики кликов для слайдов
+            if (currentSlide === 1) {
+                // Второй слайд - прокрутка к важной информации
+                slider.children[1].onclick = function() {
+                    document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth'});
+                };
+            } else if (currentSlide === 2) {
+                // Третий слайд - переход к серьгам
+                slider.children[2].onclick = function() {
+                    showEarrings();
+                };
+            } else {
+                // Остальные слайды - без действия
+                slider.children[0].onclick = null;
+                slider.children[1].onclick = null;
+                slider.children[2].onclick = null;
+            }
+        }
+
+
+
+
+
+// Функции для модального окна с отзывами
+function openModal(imageSrc) {
+    const modal = document.getElementById('reviewModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    modal.style.display = 'flex';
+    modalImg.src = imageSrc;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('reviewModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Закрытие при клике вне изображения
+document.getElementById('reviewModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// Закрытие при нажатии ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // Улучшенный скрипт слайдера
+ document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация слайдера
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+            
+            // Функция показа слайда
+            function showSlide(index) {
+                currentSlide = (index + slideCount) % slideCount;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Обновление активной точки
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentSlide);
+                    dot.setAttribute('aria-current', i === currentSlide ? 'true' : 'false');
+                });
+                
+                // Добавление обработчиков кликов для слайдов
+                slides.forEach((slide, i) => {
+                    slide.onclick = null;
+                    if (i === 1) {
+                        slide.onclick = () => document.querySelector('.delivery-info').scrollIntoView({behavior: 'smooth'});
+                    } else if (i === 2) {
+                        slide.onclick = showEarrings;
+                    }
+                });
+            }
+            
+            // Автоперелистывание
+            function startSlideShow() {
+                slideInterval = setInterval(() => showSlide(currentSlide + 1), 5000);
+            }
+            
+            // Обработчики для точек
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    clearInterval(slideInterval);
+                    showSlide(parseInt(this.getAttribute('data-index')));
+                    startSlideShow();
+                });
+                
+                // Добавляем поддержку клавиатуры
+                dot.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        clearInterval(slideInterval);
+                        showSlide(parseInt(this.getAttribute('data-index')));
+                        startSlideShow();
+                    }
+                });
+            });
+            
+            // Запускаем слайдер
+            startSlideShow();
+            
+            // Пауза при наведении
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', startSlideShow);
+            
+            // Инициализация каталога
+            const catalogBtn = document.getElementById('catalogBtn');
+            const catalogDropdown = document.getElementById('catalogDropdown');
+            
+            catalogBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                catalogDropdown.classList.toggle('active');
+            });
+            
+            // Закрытие каталога при клике вне его
+            document.addEventListener('click', function() {
+                catalogBtn.setAttribute('aria-expanded', 'false');
+                catalogDropdown.classList.remove('active');
+            });
+            
+            catalogDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // Добавляем поддержку клавиатуры для каталога
+            catalogBtn.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    this.setAttribute('aria-expanded', 'false');
+                    catalogDropdown.classList.remove('active');
+                }
+            });
+            
+            // Инициализация модальных окон
+            window.openModal = function(imageSrc) {
+                const modal = document.getElementById('reviewModal');
+                const modalImg = document.getElementById('modalImage');
+                
+                modal.classList.add('active');
+                modal.style.display = 'flex';
+                modalImg.src = imageSrc;
+                modalImg.alt = "Увеличенное изображение отзыва";
+                document.body.style.overflow = 'hidden';
+                
+                // Фокус на кнопке закрытия
+                setTimeout(() => {
+                    document.querySelector('.modal-close').focus();
+                }, 100);
+            };
+            
+            window.closeModal = function() {
+                const modal = document.getElementById('reviewModal');
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = 'auto';
+            };
+            
+            // Добавляем обработчики для модального окна
+            document.getElementById('reviewModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+            
+            // Инициализация FAQ
+            window.toggleFaq = function(element, event) {
+                if (event) event.stopPropagation();
+                
+                const answer = element.nextElementSibling;
+                const icon = element.querySelector('i');
+                const isExpanded = answer.style.maxHeight;
+                
+                // Закрываем все ответы
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.maxHeight = null;
+                    ans.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    ans.previousElementSibling.setAttribute('aria-expanded', 'false');
+                });
+                
+                // Открываем текущий, если был закрыт
+                if (!isExpanded) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                    element.setAttribute('aria-expanded', 'true');
+                }
+            };
+            
+            // Добавляем поддержку клавиатуры для FAQ
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.setAttribute('tabindex', '0');
+                question.setAttribute('aria-expanded', 'false');
+                question.setAttribute('role', 'button');
+                
+                question.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFaq(this, e);
+                    }
+                });
+            });
+            
+            // Прокрутка к верху страницы
+            window.scrollToTop = function(e) {
+                if (e) e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+            
+            // Загружаем данные товаров
+            window.earringsProducts = [
+            {
+        id: 1,
+        name: "Серьги с фианитами золото медицинское",
+        description: "Элегантные серьги с фианитами из медицинского золота",
+        price: "1000 ₽",
+        image: "Gteey.jpg",
+        rating: 4,
+        reviews: 24
+    },
+    {
+        id: 2,
+        name: "Серьги Бабочки золото медицинское",
+        price: "1300 ₽",
+        image: "Jiaal.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 3,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1200 ₽",
+        image: "03.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 4,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1000 ₽",
+        image: "04.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 5,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "00.5 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 6,
+        name: "Серьги золото медицинское",
+        price: "1300 ₽",
+        image: "00.6 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 7,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1300 ₽",
+        image: "0.7.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 8,
+        name: "Серьги Совушки золото медицинское",
+        price: "1200 ₽",
+        image: "08.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 9,
+        name: "Серьги Аллигаторы золото медицинское",
+        price: "1200 ₽",
+        image: "09.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 10,
+        name: "Серьги с чёрными фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "10.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 11,
+        name: "Серьги Версаче золото медицинское",
+        price: "1200 ₽",
+        image: "11.jpg",
+        rating: 5,
+        reviews: 37
+    }
+
+             ]; // Ваши данные о товарах
+            window.necklacesProducts = [
+            {
+        id: 101,
+        name: "Цепочка с кулоном Стрелец золото медицинское",
+        price: "2100 ₽",
+        image: "101.jpg",
+        rating: 5,
+        reviews: 18
+    },
+    {
+        id: 102,
+        name: "Цепочка с ладанкой золото медицинское",
+        price: "2000 ₽",
+        image: "102.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 103,
+        name: "Цепочка с кристаллом Swarovski золото медицинское",
+        price: "2000 ₽",
+        image: "103 — копия.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 104,
+        name: "Цепочка с кулоном Весы медицинское золото",
+        price: "2000 ₽",
+        image: "104.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 105,
+        name: "Цепочка с крестом золото медицинское",
+        price: "2000 ₽",
+        image: "105.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 106,
+        name: "Цепочка с кулоном Купидон золото медицинское",
+        price: "1800 ₽",
+        image: "106.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 107,
+        name: "Цепочка с кулоном Ангел золото медицинское",
+        price: "2100 ₽",
+        image: "107.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 108,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2000 ₽",
+        image: "108.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 109,
+        name: "Цепочка с кулоном Мать и дитя золото медицинское",
+        price: "2100 ₽",
+        image: "109.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 110,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2100 ₽",
+        image: "110.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 111,
+        name: "Цепочка с кулоном Колибри золото медицинское",
+        price: "2000 ₽",
+        image: "111.jpg",
+        rating: 4,
+        reviews: 12
+    },
+  
+
+            ]; // Ваши данные о товарах
+            window.braceletsProducts = [
+            {
+        id: 201,
+        name: "Браслет золото медицинское",
+        price: "1500 ₽",
+        image: "201.jpg",
+        rating: 4,
+        reviews: 15
+    },
+    {
+        id: 202,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "202.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 203,
+        name: "Браслет Бисмарк золото медицинское",
+        price: "1500 ₽",
+        image: "203.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 204,
+        name: "Браслет золото медицинское",
+        price: "1300 ₽",
+        image: "204.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 205,
+        name: "Браслет с фианитами золото медицинское",
+        price: "1500 ₽",
+        image: "205.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 206,
+        name: "Браслет Жёлтый бриллиант золото медицинское",
+        price: "1500 ₽",
+        image: "206.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 207,
+        name: "Браслет золото медицинское",
+        price: "1200 ₽",
+        image: "207.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 208,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "208.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 209,
+        name: "Браслет золото медицинское",
+        price: "1100 ₽",
+        image: "209.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 210,
+        name: "Браслет Византийское плетение золото медицинское",
+        price: "1500 ₽",
+        image: "210.jpg",
+        rating: 5,
+        reviews: 22
+    },
+            ]; // Ваши данные о товарах
+            window.ringsProducts = [
+            {
+        id: 301,
+        name: "Кольцо золото медицинское",
+        description: "Элегантное кольцо с фианитами из медицинского золота",
+        price: "1200 ₽",
+        image: "301.jpg",
+        rating: 4,
+        reviews: 18
+    },
+    {
+        id: 302,
+        name: "Кольцо с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "302.jpg",
+        rating: 5,
+        reviews: 25
+    },
+    {
+        id: 303,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "303.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 304,
+        name: "Обручальные кольца",
+        price: "2000 ₽",
+        image: "304.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 305,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "305.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 306,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "306.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 307,
+        name: "Кольцо золото медицинское",
+        price: "1200 ₽",
+        image: "307.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 308,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "308.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 309,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "309.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 310,
+        name: "Перстень золото медицинское",
+        price: "1300 ₽",
+        image: "310.jpg",
+        rating: 4,
+        reviews: 12
+    },
+            ]; // Ваши данные о товарах
+            window.xupingProducts = [
+            {
+        id: 401,
+        name: "Серьги с фианитами золото медицинское",
+        description: "Элегантные серьги с фианитами из медицинского золота",
+        price: "1000 ₽",
+        image: "Gteey.jpg",
+        rating: 4,
+        reviews: 24
+    },
+    {
+        id: 402,
+        name: "Серьги Бабочки золото медицинское",
+        price: "1300 ₽",
+        image: "Jiaal.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 403,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1200 ₽",
+        image: "03.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 404,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1000 ₽",
+        image: "04.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 405,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "00.5 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 406,
+        name: "Серьги золото медицинское",
+        price: "1300 ₽",
+        image: "00.6 — копия.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 407,
+        name: "Серьги с фианитами золото медицинское",
+        price: "1300 ₽",
+        image: "0.7.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 408,
+        name: "Серьги Совушки золото медицинское",
+        price: "1200 ₽",
+        image: "08.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 409,
+        name: "Серьги Аллигаторы золото медицинское",
+        price: "1200 ₽",
+        image: "09.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 410,
+        name: "Серьги с чёрными фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "10.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 411,
+        name: "Серьги Версаче золото медицинское",
+        price: "1200 ₽",
+        image: "11.jpg",
+        rating: 5,
+        reviews: 37
+    },
+    {
+        id: 412,
+        name: "Цепочка с кулоном Стрелец золото медицинское",
+        price: "2100 ₽",
+        image: "101.jpg",
+        rating: 5,
+        reviews: 18
+    },
+    {
+        id: 413,
+        name: "Цепочка с ладанкой золото медицинское",
+        price: "2000 ₽",
+        image: "102.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 414,
+        name: "Цепочка с кристаллом Swarovski золото медицинское",
+        price: "2000 ₽",
+        image: "103 — копия.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 415,
+        name: "Цепочка с кулоном Весы медицинское золото",
+        price: "2000 ₽",
+        image: "104.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 416,
+        name: "Цепочка с крестом золото медицинское",
+        price: "2000 ₽",
+        image: "105.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 417,
+        name: "Цепочка с кулоном Купидон золото медицинское",
+        price: "1800 ₽",
+        image: "106.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 418,
+        name: "Цепочка с кулоном Ангел золото медицинское",
+        price: "2100 ₽",
+        image: "107.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 419,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2000 ₽",
+        image: "108.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 420,
+        name: "Цепочка с кулоном Мать и дитя золото медицинское",
+        price: "2100 ₽",
+        image: "109.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 421,
+        name: "Цепочка с кулоном золото медицинское",
+        price: "2100 ₽",
+        image: "110.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 422,
+        name: "Цепочка с кулоном Колибри золото медицинское",
+        price: "2000 ₽",
+        image: "111.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 423,
+        name: "Браслет золото медицинское",
+        price: "1500 ₽",
+        image: "201.jpg",
+        rating: 4,
+        reviews: 15
+    },
+    {
+        id: 424,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "202.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 425,
+        name: "Браслет Бисмарк золото медицинское",
+        price: "1500 ₽",
+        image: "203.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 426,
+        name: "Браслет золото медицинское",
+        price: "1300 ₽",
+        image: "204.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 427,
+        name: "Браслет с фианитами золото медицинское",
+        price: "1500 ₽",
+        image: "205.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 428,
+        name: "Браслет Жёлтый бриллиант золото медицинское",
+        price: "1500 ₽",
+        image: "206.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 429,
+        name: "Браслет золото медицинское",
+        price: "1200 ₽",
+        image: "207.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 430,
+        name: "Браслет золото медицинское",
+        price: "1400 ₽",
+        image: "208.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 431,
+        name: "Браслет золото медицинское",
+        price: "1100 ₽",
+        image: "209.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 432,
+        name: "Браслет Византийское плетение золото медицинское",
+        price: "1500 ₽",
+        image: "210.jpg",
+        rating: 5,
+        reviews: 22
+    },
+    {
+        id: 433,
+        name: "Кольцо золото медицинское",
+        description: "Элегантное кольцо с фианитами из медицинского золота",
+        price: "1200 ₽",
+        image: "301.jpg",
+        rating: 4,
+        reviews: 18
+    },
+    {
+        id: 434,
+        name: "Кольцо с фианитами золото медицинское",
+        price: "1100 ₽",
+        image: "302.jpg",
+        rating: 5,
+        reviews: 25
+    },
+    {
+        id: 435,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "303.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 436,
+        name: "Обручальные кольца",
+        price: "2000 ₽",
+        image: "304.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 437,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "305.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 438,
+        name: "Кольцо золото медицинское",
+        price: "1100 ₽",
+        image: "306.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 439,
+        name: "Кольцо золото медицинское",
+        price: "1200 ₽",
+        image: "307.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 440,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "308.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 441,
+        name: "Перстень золото медицинское",
+        price: "1200 ₽",
+        image: "309.jpg",
+        rating: 4,
+        reviews: 12
+    },
+    {
+        id: 442,
+        name: "Перстень золото медицинское",
+        price: "1300 ₽",
+        image: "310.jpg",
+        rating: 4,
+        reviews: 12
+    },
+
+            ]; // Ваши данные о товарах
+            
+            // Функции отображения товаров (остаются без изменений)
+            // ...
+            
+            // Улучшенная функция поиска
+            window.performSearch = function() {
+                const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+                const maxPrice = parseInt(document.getElementById('priceInput').value) || 0;
+                const sortOption = document.getElementById('sortSelect').value;
+                const resultsContainer = document.getElementById('searchResults');
+                const resultsGrid = document.getElementById('searchResultsGrid');
+                
+                // Скрываем все категории товаров
+                document.querySelectorAll('[id$="-container"]').forEach(container => {
+                    container.style.display = 'none';
+                });
+                
+                // Очищаем предыдущие результаты
+                resultsGrid.innerHTML = '';
+                
+                if (searchTerm === '' && maxPrice === 0) {
+                    resultsContainer.style.display = 'none';
+                    return;
+                }
+                
+                // Ищем товары во всех категориях
+                const allProducts = [...earringsProducts, ...necklacesProducts, ...braceletsProducts, ...ringsProducts, ...xupingProducts];
+                
+                // Фильтрация
+                let foundProducts = allProducts.filter(product => {
+                    const price = product.priceValue || parseInt(product.price.replace(/\D/g, ''));
+                    const nameMatch = searchTerm === '' || product.name.toLowerCase().includes(searchTerm);
+                    const priceMatch = maxPrice === 0 || price <= maxPrice;
+                    return nameMatch && priceMatch;
+                });
+                
+                // Сортировка
+                if (sortOption) {
+                    foundProducts = sortProducts(foundProducts, sortOption);
+                }
+                
+                if (foundProducts.length > 0) {
+                    // Отображаем найденные товары
+                    foundProducts.forEach(product => {
+                        const card = document.createElement('div');
+                        card.className = 'product-item fade-in';
+                        card.innerHTML = `
+                            <div class="product-image">
+                                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                            </div>
+                            <div class="product-details">
+                                <h3>${product.name}</h3>
+                                <div class="product-price">
+                                    <span>${product.price}</span>
+                                    <button onclick="addToCart(${product.id})" aria-label="Добавить ${product.name} в корзину">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        resultsGrid.appendChild(card);
+                    });
+                    
+                    resultsContainer.style.display = 'block';
+                    resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    resultsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #8a6e6e;">Товары не найдены</p>';
+                    resultsContainer.style.display = 'block';
+                }
+            };
+            
+            // Функция добавления в корзину
+            window.addToCart = function(productId) {
+                // Прокручиваем к разделу с контактами
+                document.querySelector('.delivery-info').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Показываем уведомление
+                showNotification('Товар добавлен в корзину');
+            };
+            
+            // Функция показа уведомления
+            function showNotification(message) {
+                // Удаляем предыдущие уведомления
+                const oldNotification = document.querySelector('.notification');
+                if (oldNotification) oldNotification.remove();
+                
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.setAttribute('role', 'alert');
+                notification.setAttribute('aria-live', 'polite');
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                // Анимация появления
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                // Автоматическое скрытие
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+            
+            // Добавляем обработчики событий для всех интерактивных элементов
+            document.querySelectorAll('button, a, input, select').forEach(el => {
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && this.tagName !== 'INPUT' && this.tagName !== 'TEXTAREA') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
